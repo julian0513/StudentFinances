@@ -1,99 +1,112 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+    // Get elements for the welcome popup and help button
     const popup = document.getElementById('welcome-popup');
     const helpMeButton = document.querySelector('.popup-content button');
 
-    // Select the elements
-    const navBar = document.querySelector('.nav-bar');
-    const navItems = document.querySelectorAll('.nav-item'); // Select nav items for icons and labels
-    const mainContent = document.querySelector('.main-content');
-    const logoContainer = document.querySelector('.logo');
-    const icons = document.querySelectorAll('.icon-item');
-    const labels = document.querySelectorAll('.label'); // Select all the labels
+    // Select key elements for animations
+    const navBar = document.querySelector('.nav-bar'); // Navigation bar
+    const navItems = document.querySelectorAll('.nav-item'); // Icons and labels in the nav bar
+    const mainContent = document.querySelector('.main-content'); // Main content area
+    const logoContainer = document.querySelector('.logo'); // Logo container
+    const icons = document.querySelectorAll('.icon-item'); // Icons for each section
+    const labels = document.querySelectorAll('.label'); // Labels corresponding to the icons
 
-    // Check if the user is returning to the home page during the session
+    // Check if the user is returning from another page during the session
     const isReturningFromOtherPage = sessionStorage.getItem('isReturning');
 
-    // Initially hide the main content and logo, but not the nav bar
-    if (mainContent) mainContent.style.display = 'none';
+    // Initially hide main content and logo (keep nav bar visible)
+    if (mainContent) mainContent.style.display = 'none'; // Hide main content
     if (logoContainer) {
-        logoContainer.style.opacity = '0';
-        logoContainer.style.display = 'none';
+        logoContainer.style.opacity = '0'; // Make logo invisible
+        logoContainer.style.display = 'none'; // Hide logo
     }
 
-    // Ensure labels are not visible at the start
+    // Hide all labels at the start
     labels.forEach(label => {
-        label.style.opacity = '0';  // Hide labels initially
-        label.style.visibility = 'hidden';  // Make sure they're hidden
+        label.style.opacity = '0';  // Hide labels by setting opacity to 0
+        label.style.visibility = 'hidden';  // Ensure labels are not visible
     });
 
-    // Show the popup only if not returning from another page during the session
+    // Show the popup if the user is visiting the site for the first time in this session
     if (!isReturningFromOtherPage) {
-        // Show the popup with fade-in effect
+
+        // Display the welcome popup with a fade-in effect
         popup.style.display = 'flex';
+
         setTimeout(() => {
-            popup.classList.add('active');
+            popup.classList.add('active'); // Activate the popup
         }, 10);
 
-        // When the button is clicked
+        // When the help button is clicked, close the popup and reveal the main content
         helpMeButton.addEventListener('click', function () {
-            popup.classList.remove('active');
-            setTimeout(() => {
-                popup.style.display = 'none';
 
-                // Show the main content and logo
+            popup.classList.remove('active'); // Deactivate the popup
+
+            setTimeout(() => {
+                popup.style.display = 'none'; // Hide the popup
+
+                // Reveal the main content and logo
                 showMainContent();
                 animateNavBarIcons(); // Trigger the animation of the icons and labels
             }, 300);
         });
+
     } else {
-        // If returning, show the main content immediately
+
+        // If returning to the site, skip the popup and show the main content immediately
         showMainContent();
-        animateNavBarIcons(); // Trigger the animation of the icons and labels
+        animateNavBarIcons(); // Start nav bar animations
     }
 
-    // Function to show main content
+    // Function to reveal the main content and logo
     function showMainContent() {
-        if (navBar) navBar.style.display = 'flex'; // Static nav bar background
-        if (mainContent) mainContent.style.display = 'block';
 
-        // Show the logo with fade-in
+        if (navBar) navBar.style.display = 'flex'; // Ensure nav bar is visible
+        if (mainContent) mainContent.style.display = 'block'; // Show main content
+
+        // Fade in the logo with an animation
         if (logoContainer) {
-            logoContainer.style.display = 'block';
-            logoContainer.style.opacity = '1';
-            logoContainer.classList.add('slide-down');
+            logoContainer.style.display = 'block'; // Show logo container
+            logoContainer.style.opacity = '1'; // Make logo visible
+            logoContainer.classList.add('slide-down'); // Trigger slide-down animation
         }
 
-        // Trigger animations for the rectangles and labels
+        // Trigger animations for section icons and their labels
         loadContentAnimations();
     }
 
-    // Animate only the icons and labels inside the nav bar
+    // Function to animate nav bar icons and labels
     function animateNavBarIcons() {
+
         setTimeout(() => {
             navItems.forEach(item => {
-                item.style.opacity = '1'; // Ensure the icons and labels are visible
-                item.classList.add('fade-in'); // Apply fade-in to icons and labels
+                item.style.opacity = '1'; // Make icons and labels visible
+                item.classList.add('fade-in'); // Trigger fade-in animation for each item
             });
-        }, 300); // Adjust delay as needed
+        }, 300); // Delay for better synchronization
     }
 
-    // Set sessionStorage flag indicating the user has visited another page
+    // Set a sessionStorage flag to indicate the user has navigated to another page
     window.onbeforeunload = function () {
         sessionStorage.setItem('isReturning', 'true');
     };
+
 });
 
-// Function to load content animations
+// Function to animate the section icons and labels
 function loadContentAnimations() {
-    const icons = document.querySelectorAll('.icon-item');
-    const labels = document.querySelectorAll('.label');
 
-    // Sequentially animate the middle section icons (rectangles) and labels
+    const icons = document.querySelectorAll('.icon-item'); // Section icons
+    const labels = document.querySelectorAll('.label'); // Corresponding labels
+
+    // Animate each icon and label with a slight delay for each
     icons.forEach((icon, index) => {
+
         setTimeout(() => {
-            icon.classList.add('slide-up'); // Trigger the slide-up animation for rectangle
-            labels[index].style.visibility = 'visible'; // Ensure label becomes visible when animating
-            labels[index].classList.add('fade-in'); // Trigger the fade-in for the corresponding label
-        }, index * 1200); // Sequential delay: 1200ms apart for each
+            icon.classList.add('slide-up'); // Slide-up animation for the icon
+            labels[index].style.visibility = 'visible'; // Make label visible
+            labels[index].classList.add('fade-in'); // Trigger fade-in animation for the label
+        }, index * 1200); // Delay of 1200ms between each icon/label animation
     });
 }

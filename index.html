@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,41 +8,58 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
 
+<!-- Navigation Bar Section -->
 <div class="nav-bar">
-  <a href="#" class="nav-item">
+
+  <!-- Jobs/Income Navigation Item -->
+  <a href="jobs-income.html" class="nav-item">
     <i class="fas fa-dollar-sign dollar-sign"></i>
     <p>Jobs/Income</p>
   </a>
 
-  <a href="#" class="nav-item">
+  <!-- Financial Aid Navigation Item -->
+  <a href="financial-aid.html" class="nav-item">
     <i class="fas fa-graduation-cap"></i>
     <p>Financial Aid</p>
   </a>
 
-  <a href="#" class="nav-item">
+  <!-- Loans Navigation Item -->
+  <a href="loans.html" class="nav-item">
     <i class="fas fa-file-alt"></i>
     <p>Loans</p>
   </a>
-</div>
 
+</div>
+<!-- End of Navigation Bar -->
+
+<!-- Header Section -->
 <div class="header">
   <div class="logo">
+    <!-- Logo Icon and Title -->
     <i class="fas fa-dollar-wave"></i>
     <h1>Student Finances</h1>
   </div>
 </div>
+<!-- End of Header Section -->
 
+<!-- Main Content Section -->
 <div class="main-content">
+
+  <!-- Main Heading -->
   <h2 class="help-label">Which do you need help with?</h2>
 
-
+  <!-- Section Icons for Navigation -->
   <div class="section-icons">
+
     <!-- Jobs/Income Section -->
     <div class="section-item">
-      <a href="jobs-income.html" class="icon-link"> <!-- Wrap the entire section (label + icon) in an <a> tag -->
+      <a href="jobs-income.html" class="icon-link">
+        <!-- Label for Jobs/Income -->
         <div class="label">Jobs/Income</div>
+        <!-- Icon for Jobs/Income -->
         <div class="icon-item icon-jobs">
           <div class="icon-box">
             <i class="fas fa-dollar-sign"></i>
@@ -52,8 +70,10 @@
 
     <!-- Financial Aid Section -->
     <div class="section-item">
-      <a href="financial-aid.html" class="icon-link"> <!-- Wrap the entire section (label + icon) in an <a> tag -->
+      <a href="financial-aid.html" class="icon-link">
+        <!-- Label for Financial Aid -->
         <div class="label">Financial Aid</div>
+        <!-- Icon for Financial Aid -->
         <div class="icon-item icon-financial-aid">
           <div class="icon-box">
             <i class="fas fa-graduation-cap"></i>
@@ -64,8 +84,10 @@
 
     <!-- Loans Section -->
     <div class="section-item">
-      <a href="loans.html" class="icon-link"> <!-- Wrap the entire section (label + icon) in an <a> tag -->
+      <a href="loans.html" class="icon-link">
+        <!-- Label for Loans -->
         <div class="label">Loans</div>
+        <!-- Icon for Loans -->
         <div class="icon-item icon-loans">
           <div class="icon-box">
             <i class="fas fa-file-alt"></i>
@@ -73,15 +95,17 @@
         </div>
       </a>
     </div>
+
   </div>
+  <!-- End of Section Icons -->
+
 </div>
+<!-- End of Main Content Section -->
 
-
-
-<!-- Overlay for popup -->
+<!-- Overlay for Popup -->
 <div class="overlay" id="overlay"></div>
 
-<!-- Welcome Popup -->
+<!-- Welcome Popup Section -->
 <div id="welcome-popup">
   <div class="popup-content">
     <h2>Hey, are you in school and on a tight budget?</h2>
@@ -89,7 +113,10 @@
     <button>Get Started</button>
   </div>
 </div>
+<!-- End of Popup Section -->
 
 <script src="script.js"></script>
+
 </body>
+
 </html>

@@ -1,0 +1,474 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 30px;
+    left: 200px;
+    z-index: 10;
+    opacity: 0;
+    animation: slideDown 0.6s forwards;
+    animation-delay: 0.2s;
+}
+
+.logo h1 {
+    font-size: 26px;
+    color: black;
+    margin: 0;
+}
+
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/* Static top bar (no animation) */
+.nav-bar {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin: 0;
+    opacity: 1; /* Fully visible immediately */
+    transform: none; /* No movement for the background */
+}
+
+
+
+
+/* Centering icons and labels in the top bar */
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 40px;
+    color: gray;
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Add opacity transition */
+    opacity: 1; /* Ensure icons and labels are visible by default */
+    text-decoration: none; /* Ensure no underline */
+
+}
+
+
+/* Animate the icons (nav-item i) */
+.nav-item i {
+    font-size: 30px;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(-20px); /* Initial position above */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Smooth transition */
+}
+
+
+
+
+/* Animate the labels (nav-item p) */
+.nav-item p {
+    font-size: 18px;
+    margin: 0;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(-20px); /* Initial position above */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Smooth transition */
+}
+
+
+
+
+
+/* Animation trigger */
+.nav-item.fade-in i,
+.nav-item.fade-in p {
+    opacity: 1;
+    transform: translateY(0); /* Move to original position */
+}
+
+
+
+
+/* Hover effect */
+.nav-item:hover {
+    transform: translateY(-5px);
+}
+
+
+
+
+/* Fix for moving labels above rectangles */
+.section-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px; /* Space between the label and the rectangle */
+}
+
+
+.main-content {
+    text-align: center;
+    margin-top: 50px;
+    opacity: 0;
+    transform: translateX(100%);
+    animation: fadeInSnap 0.6s forwards;
+    animation-delay: 0.2s;
+}
+
+.help-label {
+    font-size: 38px;
+    color: gray;
+    margin-bottom: 40px;
+}
+
+.section-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    gap: 100px;
+}
+
+
+.icon-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(100px); /* Start below */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Smooth transition */
+}
+
+
+/* Ensure the <a> tag does not interfere with the layout */
+.icon-link {
+    text-decoration: none; /* Remove default link styling */
+    color: inherit; /* Ensure link inherits color from parent */
+    display: flex;
+    flex-direction: column; /* Stack label and icon vertically */
+    align-items: center;
+}
+
+
+
+.label {
+    margin-bottom: 50px; /* Adjust to move the label above the icon */
+    font-size: 32px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(100px); /* Start below */
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    visibility: hidden; /* Ensure labels are completely hidden initially */
+}
+
+/* When fading in, make them visible */
+.label.fade-in {
+    opacity: 1;
+    transform: translateY(0); /* End in the visible position */
+    visibility: visible; /* Ensure they become visible when animated */
+}
+
+@keyframes slideUpFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(100px); /* Start from below */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End in the visible position */
+    }
+}
+
+/* Left rectangle (Jobs/Income) */
+.icon-item.icon-jobs {
+    width: 400px;
+    height: 500px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 10px -10px 25px rgba(0, 233, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(100px); /* Start below */
+    animation: slideUpFadeIn 0.8s ease-out forwards;
+    animation-delay: 1.8s;
+}
+
+/* Sync Jobs/Income label with the rectangle */
+.section-item:nth-child(1) .label {
+    animation: slideUpFadeIn 0.8s ease-out forwards;
+    animation-delay: 1.8s;
+    visibility: visible;
+}
+
+.icon-item.icon-jobs:hover {
+    box-shadow: 15px -15px 30px rgba(0, 233, 255, 1);
+    transform: scale(1.05);
+}
+
+/* Middle rectangle (Financial Aid) */
+.icon-item.icon-financial-aid {
+    width: 400px;
+    height: 500px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 10px -10px 25px rgba(0, 255, 157, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(100px);
+    animation: slideUpFadeIn 0.8s ease-out forwards;
+    animation-delay: 2.4s;
+}
+
+/* Sync Financial Aid label with the rectangle */
+.section-item:nth-child(2) .label {
+    animation: slideUpFadeIn 0.8s ease-out forwards;
+    animation-delay: 2.4s;
+    visibility: visible;
+}
+
+.icon-item.icon-financial-aid:hover {
+    box-shadow: 15px -15px 30px rgba(0, 255, 157, 0.7);
+    transform: scale(1.05);
+}
+
+/* Right rectangle (Loans) */
+.icon-item.icon-loans {
+    width: 400px;
+    height: 500px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 10px -10px 25px rgb(0, 233, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(100px);
+    animation: slideUpFadeIn 0.8s ease-out forwards;
+    animation-delay: 3.0s;
+}
+
+/* Sync Loans label with the rectangle */
+.section-item:nth-child(3) .label {
+    animation: slideUpFadeIn 0.8s ease-out forwards;
+    animation-delay: 3.0s;
+    visibility: visible;
+}
+
+.icon-item.icon-loans:hover {
+    box-shadow: 15px -15px 30px rgb(0, 233, 255);
+    transform: scale(1.05);
+}
+
+.icon-box i {
+    font-size: 110px;
+    color: black;
+}
+
+@keyframes fadeInSnap {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#welcome-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#welcome-popup.active {
+    display: flex;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.popup-content {
+    padding: 40px;
+    text-align: center;
+}
+
+.popup-content h2 {
+    font-size: 48px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.popup-content p {
+    font-size: 28px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.popup-content button {
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.popup-content button:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+}
+
+
+
+/*////////////////////////////////////////////////////////////
+
+
+
+/* Jobs/Income Page Specific Styles */
+.main-content-jobs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: calc(100vh - 100px);
+    padding: 0 50px;
+}
+
+/* Back arrow in the top bar */
+.back-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    font-size: 24px;
+    color: black;
+    text-decoration: none;
+}
+
+.back-arrow:hover {
+    text-decoration: underline;
+}
+
+/* Title animation */
+.jobs-title {
+    font-size: 48px;
+    font-weight: normal;
+    margin-top: 40px;
+    color: black;
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: fadeDown 1s forwards;
+    animation-delay: 0.5s;
+    text-align: center;
+    width: 100%; /* Ensure title spans the full width */
+}
+
+/* Left content image */
+.custom-image {
+    width: 600px;
+    height: 600px;
+    opacity: 0;
+    transform: translateX(-100px);
+    animation: fadeInFromLeft 1s forwards;
+    animation-delay: 0.8s;
+    border-radius: 15px; /* Soft rounded edges */
+    box-shadow: -15px 10px 30px rgba(255, 0, 221, 0.6); /* Pronounced shadow on the left */
+    transition: all 0.3s ease;
+    margin-bottom: 400px;
+    margin-left: 300px;
+}
+
+/* Text Box for Jobs/Income */
+.info-section {
+    opacity: 0;
+    transform: translateX(100px); /* Initially off-screen to the right */
+    animation: fadeInFromRight 1s forwards;
+    animation-delay: 1s;
+}
+
+.info-section p {
+    font-size: 18px;
+    line-height: 1.8; /* Line spacing between lines */
+    background-color: #fff; /* Clean white background */
+    padding: 25px 30px; /* Adjusted padding for a clean look */
+    border-radius: 20px; /* Softer rounded edges */
+    box-shadow: -2px -2px 10px rgba(0, 233, 255, 0.14), /* Subtle shadow on left and bottom */
+    8px 8px 30px rgba(0, 233, 255, 0.84);   /* Stronger shadow on top and right for pop effect */
+    max-width: 1700px;
+    margin-top: -350px; /* Adjust this to raise the box if needed */
+    color: #333; /* Slightly darker text for contrast */
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Very light border for a minimal touch */
+    margin-right: 300px; /* Push it towards the left */
+}
+
+/* Optional: Add hover effect for more interaction */
+.info-section p:hover {
+    box-shadow: -2px -2px 15px rgba(0, 233, 255, 0.44), /* Subtle hover change for left/bottom */
+    12px 12px 45px rgba(0, 217, 255, 0.6); /* Stronger pop on right/top during hover */
+    transform: translateY(-2px); /* Slight lift on hover for depth */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Keyframes for animations */
+@keyframes fadeDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInFromLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInFromRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Custom font styling */
+body, .info-section p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+}
+
+h1.jobs-title {
+    font-family: 'Roboto', sans-serif;
+}

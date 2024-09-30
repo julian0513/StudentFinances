@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Finances</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+<div class="nav-bar">
+  <a href="#" class="nav-item">
+    <i class="fas fa-dollar-sign dollar-sign"></i>
+    <p>Jobs/Income</p>
+  </a>
+
+  <a href="#" class="nav-item">
+    <i class="fas fa-graduation-cap"></i>
+    <p>Financial Aid</p>
+  </a>
+
+  <a href="#" class="nav-item">
+    <i class="fas fa-file-alt"></i>
+    <p>Loans</p>
+  </a>
+</div>
+
+<div class="header">
+  <div class="logo">
+    <i class="fas fa-dollar-wave"></i>
+    <h1>Student Finances</h1>
+  </div>
+</div>
+
+<div class="main-content">
+  <h2 class="help-label">Which do you need help with?</h2>
+
+
+  <div class="section-icons">
+    <!-- Jobs/Income Section -->
+    <div class="section-item">
+      <a href="jobs-income.html" class="icon-link"> <!-- Wrap the entire section (label + icon) in an <a> tag -->
+        <div class="label">Jobs/Income</div>
+        <div class="icon-item icon-jobs">
+          <div class="icon-box">
+            <i class="fas fa-dollar-sign"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Financial Aid Section -->
+    <div class="section-item">
+      <a href="financial-aid.html" class="icon-link"> <!-- Wrap the entire section (label + icon) in an <a> tag -->
+        <div class="label">Financial Aid</div>
+        <div class="icon-item icon-financial-aid">
+          <div class="icon-box">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Loans Section -->
+    <div class="section-item">
+      <a href="loans.html" class="icon-link"> <!-- Wrap the entire section (label + icon) in an <a> tag -->
+        <div class="label">Loans</div>
+        <div class="icon-item icon-loans">
+          <div class="icon-box">
+            <i class="fas fa-file-alt"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Overlay for popup -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Welcome Popup -->
+<div id="welcome-popup">
+  <div class="popup-content">
+    <h2>Hey, are you in school and on a tight budget?</h2>
+    <p>Me too, but that's ok, I'm here to help!</p>
+    <button>Get Started</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -404,8 +404,8 @@ body {
     border-radius: 15px; /* Soft rounded edges */
     box-shadow: -15px 10px 30px rgba(255, 0, 221, 0.6); /* Pronounced shadow on the left */
     transition: all 0.3s ease;
-    margin-bottom: 500px;
-    margin-left: 600px;
+    margin-bottom: 400px;
+    margin-left: 100px;
 }
 
 
@@ -431,20 +431,22 @@ body {
 }
 
 .info-section p {
-    font-size: 14px;
-    line-height: 1.8; /* Line spacing between lines */
+    font-size: 12px; /* Reduce font size to fit more text */
+    line-height: 1.5; /* Reduce line spacing between lines */
     background-color: #fff; /* Clean white background */
-    padding: 25px 30px; /* Adjusted padding for a clean look */
+    padding: 20px 30px; /* Adjust padding for a clean look */
     border-radius: 20px; /* Softer rounded edges */
     box-shadow: -2px -2px 10px rgba(0, 233, 255, 0.14), /* Subtle shadow on left and bottom */
     8px 8px 30px rgba(0, 233, 255, 0.84);   /* Stronger shadow on top and right for pop effect */
-    max-width: 800px;
-    margin-top: -450px; /* Adjust this to raise the box if needed */
+    max-width: 1000px;
+    max-height: 350px; /* Constrain height */
+    overflow-y: auto; /* Add vertical scroll if content exceeds height */
     color: #333; /* Slightly darker text for contrast */
     border: 1px solid rgba(0, 0, 0, 0.05); /* Very light border for a minimal touch */
-    margin-right: 800px; /* Push it towards the left */
-    max-height: 600px;
+    margin-right: 100px; /* Push it towards the left */
+    margin-bottom: 400px;
 }
+
 
 /* Optional: Add hover effect for more interaction */
 .info-section p:hover {

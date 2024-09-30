@@ -3,15 +3,15 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .header {
     display: flex;
     align-items: center;
     position: absolute;
-    top: 5vh;
-    left: 10vw;
+    top: 30px;
+    left: 200px;
     z-index: 10;
     opacity: 0;
     animation: slideDown 0.6s forwards;
@@ -19,12 +19,11 @@ body {
 }
 
 .logo h1 {
-    font-size: 4vw; /* Adjusted for responsiveness */
+    font-size: 26px;
     color: black;
     margin: 0;
 }
 
-/* Keyframes for animation */
 @keyframes slideDown {
     0% {
         opacity: 0;
@@ -36,78 +35,93 @@ body {
     }
 }
 
+
+
 /* Static top bar (no animation) */
 .nav-bar {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
     background-color: white;
-    padding: 1rem;
+    padding: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     margin: 0;
-    opacity: 1;
+    opacity: 1; /* Fully visible immediately */
+    transform: none; /* No movement for the background */
 }
+
+
+
 
 /* Centering icons and labels in the top bar */
 .nav-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2vh 4vw;
+    margin: 20px 40px;
     color: gray;
-    transition: opacity 0.6s ease, transform 0.6s ease;
-    opacity: 1;
-    text-decoration: none;
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Add opacity transition */
+    opacity: 1; /* Ensure icons and labels are visible by default */
+    text-decoration: none; /* Ensure no underline */
+
 }
 
+
+/* Animate the icons (nav-item i) */
 .nav-item i {
-    font-size: 4vw; /* Responsive font size */
-    margin-bottom: 1rem;
+    font-size: 30px;
+    margin-bottom: 10px;
     opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(-20px); /* Initial position above */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Smooth transition */
 }
 
+
+
+
+/* Animate the labels (nav-item p) */
 .nav-item p {
-    font-size: 2vw; /* Responsive font size */
+    font-size: 18px;
     margin: 0;
+    text-decoration: none;
     opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(-20px); /* Initial position above */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Smooth transition */
 }
+
+
+
+
 
 /* Animation trigger */
 .nav-item.fade-in i,
 .nav-item.fade-in p {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0); /* Move to original position */
 }
+
+
+
 
 /* Hover effect */
 .nav-item:hover {
     transform: translateY(-5px);
 }
 
+
+
+
 /* Fix for moving labels above rectangles */
 .section-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 8vh;
-    flex-wrap: wrap; /* Ensure wrapping on smaller screens */
+    margin-bottom: 80px; /* Space between the label and the rectangle */
 }
-
-
-
-
-
-
-
 
 
 .main-content {
     text-align: center;
-    margin-top: 5vh; /* Relative margin */
+    margin-top: 50px;
     opacity: 0;
     transform: translateX(100%);
     animation: fadeInSnap 0.6s forwards;
@@ -115,73 +129,93 @@ body {
 }
 
 .help-label {
-    font-size: 3vw; /* Responsive font size */
+    font-size: 38px;
     color: gray;
-    margin-bottom: 4vh; /* Responsive margin */
+    margin-bottom: 40px;
 }
 
 .section-icons {
     display: flex;
     justify-content: center;
-    margin-top: 10vh;
-    gap: 5vw; /* Responsive gap */
+    margin-top: 100px;
+    gap: 100px;
 }
+
 
 .icon-item {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    opacity: 0;
-    transform: translateY(10vh); /* Start below, responsive to height */
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(100px); /* Start below */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Smooth transition */
 }
 
+
+/* Ensure the <a> tag does not interfere with the layout */
 .icon-link {
-    text-decoration: none;
-    color: inherit;
+    text-decoration: none; /* Remove default link styling */
+    color: inherit; /* Ensure link inherits color from parent */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack label and icon vertically */
     align-items: center;
 }
 
+
+
 .label {
-    margin-bottom: 5vh; /* Responsive margin */
-    font-size: 2.5vw; /* Responsive font size */
+    margin-bottom: 60px; /* Adjust to move the label above the icon */
+    font-size: 32px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     color: black;
     font-weight: bold;
     text-align: center;
-    opacity: 0;
-    transform: translateY(10vh); /* Start below */
+    opacity: 0; /* Initially hidden */
+    transform: translateY(100px); /* Start below */
     transition: opacity 0.8s ease, transform 0.8s ease;
-    visibility: hidden;
+    visibility: hidden; /* Ensure labels are completely hidden initially */
 }
 
+/* When fading in, make them visible */
 .label.fade-in {
     opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
+    transform: translateY(0); /* End in the visible position */
+    visibility: visible; /* Ensure they become visible when animated */
 }
 
-.icon-item.icon-jobs,
-.icon-item.icon-financial-aid,
-.icon-item.icon-loans {
-    width: 30vw; /* Responsive width */
-    height: 40vh; /* Responsive height */
+@keyframes slideUpFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(100px); /* Start from below */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End in the visible position */
+    }
+}
+
+/* Left rectangle (Jobs/Income) */
+.icon-item.icon-jobs {
+    width: 300px;
+    height: 300px;
     background-color: white;
     border-radius: 15px;
+    box-shadow: 10px -10px 25px rgba(0, 233, 255, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transform: translateY(10vh);
+    transform: translateY(100px); /* Start below */
     animation: slideUpFadeIn 0.8s ease-out forwards;
+    animation-delay: 1.8s;
 }
 
-.icon-item.icon-jobs {
-    box-shadow: 10px -10px 25px rgba(0, 233, 255, 0.7);
+/* Sync Jobs/Income label with the rectangle */
+.section-item:nth-child(1) .label {
+    animation: slideUpFadeIn 0.8s ease-out forwards;
     animation-delay: 1.8s;
+    visibility: visible;
 }
 
 .icon-item.icon-jobs:hover {
@@ -189,9 +223,27 @@ body {
     transform: scale(1.05);
 }
 
+/* Middle rectangle (Financial Aid) */
 .icon-item.icon-financial-aid {
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    border-radius: 15px;
     box-shadow: 10px -10px 25px rgba(0, 255, 157, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(100px);
+    animation: slideUpFadeIn 0.8s ease-out forwards;
     animation-delay: 2.4s;
+}
+
+/* Sync Financial Aid label with the rectangle */
+.section-item:nth-child(2) .label {
+    animation: slideUpFadeIn 0.8s ease-out forwards;
+    animation-delay: 2.4s;
+    visibility: visible;
 }
 
 .icon-item.icon-financial-aid:hover {
@@ -199,9 +251,27 @@ body {
     transform: scale(1.05);
 }
 
+/* Right rectangle (Loans) */
 .icon-item.icon-loans {
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    border-radius: 15px;
     box-shadow: 10px -10px 25px rgb(0, 233, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(100px);
+    animation: slideUpFadeIn 0.8s ease-out forwards;
     animation-delay: 3.0s;
+}
+
+/* Sync Loans label with the rectangle */
+.section-item:nth-child(3) .label {
+    animation: slideUpFadeIn 0.8s ease-out forwards;
+    animation-delay: 3.0s;
+    visibility: visible;
 }
 
 .icon-item.icon-loans:hover {
@@ -210,37 +280,20 @@ body {
 }
 
 .icon-box i {
-    font-size: 8vw; /* Responsive font size */
+    font-size: 110px;
     color: black;
 }
 
-@media screen and (max-width: 768px) {
-    .section-icons {
-        flex-direction: column; /* Stack icons vertically on smaller screens */
-        gap: 8vh; /* Adjust gap for smaller screens */
+@keyframes fadeInSnap {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
     }
-
-    .icon-item {
-        width: 60vw; /* Resize for smaller screens */
-        height: 30vh;
-    }
-
-    .help-label {
-        font-size: 6vw;
-    }
-
-    .label {
-        font-size: 5vw;
+    100% {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
-
-
-
-
-
-
-
-
 
 #welcome-popup {
     display: none;
@@ -342,8 +395,8 @@ body {
 
 /* Left content image */
 .custom-image {
-    width: 600px;
-    height: 600px;
+    width: 400px;
+    height: 400px;
     opacity: 0;
     transform: translateX(-100px);
     animation: fadeInFromLeft 1s forwards;
@@ -351,8 +404,8 @@ body {
     border-radius: 15px; /* Soft rounded edges */
     box-shadow: -15px 10px 30px rgba(255, 0, 221, 0.6); /* Pronounced shadow on the left */
     transition: all 0.3s ease;
-    margin-bottom: 400px;
-    margin-left: 300px;
+    margin-bottom: 500px;
+    margin-left: 600px;
 }
 
 
@@ -378,18 +431,19 @@ body {
 }
 
 .info-section p {
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.8; /* Line spacing between lines */
     background-color: #fff; /* Clean white background */
     padding: 25px 30px; /* Adjusted padding for a clean look */
     border-radius: 20px; /* Softer rounded edges */
     box-shadow: -2px -2px 10px rgba(0, 233, 255, 0.14), /* Subtle shadow on left and bottom */
     8px 8px 30px rgba(0, 233, 255, 0.84);   /* Stronger shadow on top and right for pop effect */
-    max-width: 1700px;
-    margin-top: -350px; /* Adjust this to raise the box if needed */
+    max-width: 800px;
+    margin-top: -450px; /* Adjust this to raise the box if needed */
     color: #333; /* Slightly darker text for contrast */
     border: 1px solid rgba(0, 0, 0, 0.05); /* Very light border for a minimal touch */
-    margin-right: 300px; /* Push it towards the left */
+    margin-right: 800px; /* Push it towards the left */
+    max-height: 600px;
 }
 
 /* Optional: Add hover effect for more interaction */
